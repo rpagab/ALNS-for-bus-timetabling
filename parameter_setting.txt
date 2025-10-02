@@ -1,0 +1,10 @@
+The following parameter values are common to all experiments with the ALNS solution method
+nbThreads = 8
+opsString = "10001"  # Only the first and fifth operators have been retained ("00001" or "10000" when an operator is deactivated)
+op1String = "0_0_0_0"  # Heuristic operator
+op5String = "2_8_0_180"  # MILP operator with two routes and eight bus runs per route destroyed, maximum 180 seconds allocated to Gurobi
+lstand = 0.1  # Base reaction factor mu, set equal to lmax (mu_max in the paper)
+lmax = 0.1  # Max reaction factor (mu_max in the paper)
+sigmas = "1_0.005_1e-8"  # Rewards
+tinit = 100  # Initial temperature
+tfin = 1e-4  # Final temperature

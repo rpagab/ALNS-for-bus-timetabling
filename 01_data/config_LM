@@ -1,0 +1,14 @@
+hmin=5
+hmax=30
+dwellmin=1
+dwellmax=2
+transfermax=20
+period=15
+horizon=1080
+nbuses=[32,32,32,32,32,32]
+weight_invehicle=1
+weight_wait=1.5
+weight_transfer=1.5
+weight_latearrival=2
+weight_earlyarrival=0.5
+exp_arrivalbuffer=10
