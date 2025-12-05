@@ -5,15 +5,15 @@ Robin Gaborit a, Evelien van der Hurk a, Otto Anker Nielsen a, Yu Jiang a, b, 1
 a Department of Technology, Management and Economics, Technical University of Denmark, Denmark
 b Lancaster University Management School, Lancaster University, United Kingdom
 
-The current version contains the input data, the parameter settings and the raw results. The future version will include the Julia source code.
-
 # Description
 
-We developed a metaheuristic solution method to solve the model proposed by Lee et al. (2022). This is an acyclic bus timetabling problem with time-dependent travel time and demand data.
+We developed a metaheuristic solution method to solve the model proposed by Lee et al. (2022). The model is an acyclic bus timetabling problem with time-dependent travel time and demand data. The solution method is an Adaptive Large Neighbourhood Search matheuristic accounting for computation times in operator selection. 
 
 # Input data
 
-The study focuses on three bus lines operating within the metropolitan area of Copenhagen, Denmark. These lines, designated 1A, 2A, and 3A, represented some of the most prominent bus routes in the city. We employ a dataset comprising the Danish Rejsekort smart card transactions from 2014. A total of nine instances were produced based on this network. Each instance is named by one letter S, M or L and one number 1, 2 or 3. The letter indicates if the instance size is Small, Medium or Large. Files related to input data are in folder data.
+The study focuses on three bus lines operating within the metropolitan area of Copenhagen, Denmark. These lines, designated 1A, 2A, and 3A, represented some of the most prominent bus routes in the city. We employ a dataset comprising the Danish Rejsekort smart card transactions from 2014.
+
+A total of nine instances were produced based on this network. Each instance is named by one letter S, M or L and one number 1, 2 or 3. The letter indicates if the instance size is Small, Medium or Large. Files related to input data are in folder data.
 
 Folder data includes files config_S, config_M, and config_L that contains parameters common to all instances of the same size(durations are in minutes):
 - hmin: minimum headway for each bus route
@@ -67,13 +67,9 @@ The following parameters differ between experiments using our ALNS solution meth
 
 The future version will include the Julia source code.
 
-# Results
+# Raw results
 
-Folder results contains five subfolders:
-
-## avgCompTimes
-
-This is the average computation time of running an operator for two hours for ten runs of the nine instances, in seconds. The average results are presented in section 5.3, Table 3 of the paper.
+Folder rawResults contains five subfolders: baseALNS, exactMethods, impactOperators, and mechanismWeightUpdate
 
 ## baseALNS
 
@@ -85,13 +81,21 @@ The six subfolders contains the results with the six exact methods (same notatio
 
 ## impactOperators
 
-The format of the file names is the same as baseALNS. These results are used to produce Table 4 in Section 5.5.
+The two subfolders include the results deactivating one of the two operators. The format of the file names is the same as baseALNS.
 
 ## mechanismWeightUpdate
 
-The format of the file names is the same as baseALNS. These results are used to produce Table 5 in Section 5.6.
+The five subfolders include the results with one of five exponents in the formula of revised weights. The format of the file names is the same as baseALNS.
 
+# Processed results
 
+Folder resultsProcessing includes the two files used to produce Tables 2-5 and Figure 2 in the paper.
+
+- Table 2 (Section 5.2): run resultsProcessing/processingObj.ipynb importing data from rawResults/baseALNS and rawResults/exactMethods
+- Table 3 (Section 5.3): run resultsProcessing/processingPerIteration.ipynb importing data from rawResults/perIteration
+- Figure 2 (Section 5.4): run resultsProcessing/processingPerIteration.ipynb importing data from rawResults/perIteration
+- Table 4 (Section 5.5): run resultsProcessing/processingObj.ipynb importing data from rawResults/impactOperators
+- Table 5 (Section 5.6): run resultsProcessing/processingObj.ipynb importing data from rawResults/mechanismWeightUpdate
 
 # References
 
