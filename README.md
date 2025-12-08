@@ -15,7 +15,7 @@ The study focuses on three bus lines operating within the metropolitan area of C
 
 A total of nine instances were produced based on this network. Each instance is named by one letter S, M or L and one number 1, 2 or 3. The letter indicates if the instance size is Small, Medium or Large. Files related to input data are in folder data.
 
-Folder data includes files config_S, config_M, and config_L that contains parameters common to all instances of the same size(durations are in minutes):
+Folder data includes files config_S, config_M, and config_L that contains parameters common to all instances of the same size (durations are in minutes):
 - hmin: minimum headway for each bus route
 - hmax: maximum headway for each bus route
 - dwellmin: minimum dwell time for each bus route and stop
@@ -69,7 +69,7 @@ The future version will include the Julia source code.
 
 # Raw results
 
-Folder rawResults contains five subfolders: baseALNS, exactMethods, impactOperators, and mechanismWeightUpdate
+Folder rawResults contains four subfolders: baseALNS, exactMethods, impactOperators, and mechanismWeightUpdate
 
 ## baseALNS
 
@@ -87,7 +87,7 @@ The two subfolders include the results deactivating one of the two operators. Th
 
 The five subfolders include the results with one of five exponents in the formula of revised weights. The format of the file names is the same as baseALNS.
 
-# Processed results
+# Processing of the results
 
 Folder resultsProcessing includes the two files used to produce Tables 2-5 and Figure 2 in the paper.
 
