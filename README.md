@@ -56,7 +56,7 @@ The following parameters are common to all experiments using our ALNS solution m
 - maxComptime = 7200: the maximum computation time, in seconds
 - nbThreads = 8: the number of threads used by Gurobi in the MILP operator
 - lmax = 0.1: the maximum reaction factor $\eta_{max}$
-- sigmas = 1_0.005_1e-8: the rewards $\sigma_{1}\_\sigma_{2}\_\sigma_{3}$
+- sigmas = 1_0.005_1e-8: the rewards $\sigma_1$ _ $\sigma_2$ _ $\sigma_3$
 - tinit = 100: the initial temperature $T_{ini}$
 - tfin = 100: the final temperature $T_{fin}$
 - validInequalities = 0: 0 indicates the valid inequalities are not included in the MILP operator
