@@ -100,14 +100,14 @@ The six subfolders contains the results with the six exact methods (same notatio
 
 | Model formulation | Solution file |
 |----------|----------|
-| $a_{rs}^k$        | a[$r, s, k$]        |
-| $u_{rs}^k$        | u[$r, s, k$]        | 
-| $d_{rs}^k$        | d[$r, s, k$]        |  
-| $\varphi_{rs}^{k\tau}$        | phi[$r, s, k, \tau$]        |
-| $\gamma_g^k$        | gamma0[$k, g$]        | 
-| $\gamma_{\psi}^{k, k'}$        | gamma[$\psi, k, k'$]        | 
-| $\delta_{g\psi_g^{(i)}}^{k, k'}$        | delta[$g, \psi_g^{(i)}, k, k'$]        | 
-| $p_{g\psi_g^{(i)}}^{k, k'}$        | p[$g, \psi_g^{(i)}, k, k'$]        | 
+| $a_{rs}^k$        | a[$r$, $s$, $k$]        |
+| $u_{rs}^k$        | u[$r$, $s$, $k$]        | 
+| $d_{rs}^k$        | d[$r$, $s$, $k$]        |  
+| $\varphi_{rs}^{k\tau}$        | phi[$r$, $s$, $k$, $\tau$]        |
+| $\gamma_g^k$        | gamma0[$k$, $g$]        | 
+| $\gamma_{\psi}^{k, k'}$        | gamma[$\psi$, $k$, $k'$]        | 
+| $\delta_{g\psi_g^{(i)}}^{k, k'}$        | delta[$g$, $\psi_g^{(i)}$, $k$, $k'$]        | 
+| $p_{g\psi_g^{(i)}}^{k, k'}$        | p[$g$, $\psi_g^{(i)}$, $k$, $k'$]        | 
 | $y_g$        | yg[$g$]        | 
 | $v_g$        | vg[$g$]        | 
 | $p_g$        | pg[$g$]        | 
