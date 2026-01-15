@@ -7,9 +7,9 @@ Robin Gaborit<sup>a</sup>, Evelien van der Hurk<sup>a</sup>, Otto Anker Nielsen<
 <sup>b</sup>Lancaster University Management School, Lancaster University, United Kingdom  
 <sup>1</sup>Corresponding author
 
-# Description
+# Abstract
 
-We developed a metaheuristic solution method to solve the model proposed by Lee et al. (2022). The model is an acyclic bus timetabling problem with time-dependent travel time and demand data. The solution method is an Adaptive Large Neighbourhood Search matheuristic accounting for computation times in operator selection. 
+This study develops an adaptive large neighbourhood search (ALNS) based matheuristic to an acyclic bus timetabling problem with time-dependent travel time and demand data. Two types of repair operators are proposed: a Mixed Integer Linear Programming (MILP) operator that solves a restricted version of the problem where decision variables are defined by a destroy operator, and a heuristic operator that shifts buses’ departing times. Their mixed usage induces the challenge of allocating computation time to different operators with significantly different execution times. Noticing that existing operator selection mechanisms may allocate excessive time to slow operators, this study establishes a novel formula called the inverse-square rule. Computational results on a part of the Copenhagen Network show that (1) the ALNS-framework with the proposed inverse-square rule outperforms exact solution methods across all instances, (2) using a fast heuristic repair operator and a slow MILP repair operator is substantially better than using either one alone, and (3) on average, the inverse-square rule demonstrates better performance than other inverse-power formulas.
 
 # Input data
 
@@ -67,15 +67,23 @@ The following parameters differ between experiments using our ALNS solution meth
 
 # Implementation
 
-The future version will include the Julia source code.
+The future version will include the Julia source code. The results have been produced with Julia version 1.11 and Gurobi version 12.0.
 
 # Results
 
-Folder Results contains four subfolders: baseALNS, exactMethods, impactOperators, and mechanismWeightUpdate. Durations are in minutes and times are in number of minutes after 7 a.m..
+Folder Results contains four subfolders: baseALNS, exactMethods, impactOperators, and mechanismWeightUpdate. Durations are in minutes and times are in number of minutes after 7 a.m.. The names of the files are formatted as follows:
+
+| Type of solution method | Type of output | Format of the file name |
+|----------|----------|----------|
+| ALNS | Objective value | Obj_instance_maxCompTime_nbThreads_operatorSet_lmax_sigmas_tinit_tfin_exponentForTime_validInequalities_run.txt |
+| ALNS | Timetable | Tim_instance_maxCompTime_nbThreads_operatorSet_lmax_sigmas_tinit_tfin_exponentForTime_validInequalities_run.txt |
+| Exact | Objective value | Obj_instance_maxCompTime_nbThreads_initialSolution_validInequalities_run.txt |
+| Exact | Timetable | Tim_instance_maxCompTime_nbThreads_initialSolution_validInequalities_run.txt |
+| Exact | MILP variables | Sol_instance_maxCompTime_nbThreads_initialSolution_validInequalities_run.txt |
 
 ## baseALNS
 
-Subfolder baseALNS includes subfolders Objective, PerIteration, and Timetable. In Objective, each file contains the objective function value produced by one run of the ALNS for one instance and the base parameters (full operator set and inverse-square rule). The name of an objective file is in the format Obj_instance_maxCompTime_nbThreads_operatorSet_lmax_sigmas_tinit_tfin_exponentForTime_validInequalities_run.txt. Besides other results, these results are used to produce Tables 2, 4, and 5.
+Subfolder baseALNS includes subfolders Objective, PerIteration, and Timetable. In Objective, each file contains the objective function value produced by one run of the ALNS for one instance and the base parameters (full operator set and inverse-square rule). Besides other results, these results are used to produce Tables 2, 4, and 5.
 
 In PerIteration, each file contains various variable values at each iteration of the ALNS. The useful columns are:
 - time: elapsed time, in seconds
@@ -84,11 +92,11 @@ In PerIteration, each file contains various variable values at each iteration of
 - duration 5: total time consumed by the iterations employing with the MILP operator, in seconds
 These results are used to produce Figure 2.
 
-In Timetable, each file contains the timetable (arrival and departure times of each bus route and run at each stop) of one ALNS run. The name of a timetable file is in the format Tim_instance_maxCompTime_nbThreads_operatorSet_lmax_sigmas_tinit_tfin_exponentForTime_validInequalities_run.txt.
+In Timetable, each file contains the timetable (arrival and departure times of each bus route and run at each stop) of one ALNS run.
 
 ## exactMethods
 
-The six subfolders contains the results with the six exact methods (same notations as in Section 5.2.2). Each subfolder contains three subforlders. In Objective, the name of an objective file is in the format Obj_instance_maxCompTime_nbThreads_initialSolution_validInequalities_run.txt. These results are used to produce Tables 2 in Section 5.2.2. In Timetable, the name of a timetable file is in the format Tim_instance_maxCompTime_nbThreads_initialSolution_validInequalities_run.txt. If no feasible solution is produced, the timetable file is empty. In MILPSolution, each file contains all variables of the best solution found by Gurobi. The following notations are used:
+The six subfolders contains the results with the six exact methods (same notations as in Section 5.2.2). Each subfolder contains three subforlders, Objective, Timetable, and MILPSolution. These results are used to produce Tables 2 in Section 5.2.2. In MILPSolution, each file contains all variables of the best solution found by Gurobi. The following notations are used:
 
 | Model formulation | Solution file |
 |----------|----------|
@@ -107,31 +115,45 @@ The six subfolders contains the results with the six exact methods (same notatio
 | $e_g$        | eg[$g$]        | 
 | $l_g$        | lg[$g$]        | 
 
-The name of a solution file is in the format Sol_instance_maxCompTime_nbThreads_initialSolution_validInequalities_run.sol. If no feasible solution is produced, the solution file does not exists.
+If no feasible solution is produced, the solution file does not exist and the timetable file is empty.
 
 ## impactOperators
 
-The three subfolders include the results deactivating one of the two operators. The formats of the file names are the same as baseALNS. In PerIteration, the useful columns are:
+The two subfolders include the results deactivating one of the two operators. In PerIteration, the useful columns are:
 - avgDuration 1: average time consumed by one iteration with the heuristic operator, in seconds
 - avgDuration 5: average time consumed by one iteration with the MILP operator, in seconds
 
 ## mechanismWeightUpdate
 
-The five subfolders include the results with one of five exponents in the formula of revised weights. The formats of the file names are the same as baseALNS.
+The five subfolders include the results with one of five exponents in the formula of revised weights.
 
 # Processing of the results
 
-Folder postProcessing includes the files processing the raw results. 
+Folder postProcessing includes the Python files processing the raw results. We used Python version 3.9. Packages os, pandas, numpy, itertools, statistics, and matplotlib are required.
 
-File formattingTimetable.ipynb can be used to convert the format of the timetables in folder Results from the number of minutes after 7 a.m. to "HH:MM". Folder examplesFormattedTimetables contains a few examples.
+File formattingTimetable.ipynb converts the format of the timetables in folder Results from the number of minutes after 7 a.m. to "HH:MM".
 
-Files processingObj.ipynb and processingPerIteration.ipynb are used to produce Tables 2-5 and Figure 2 in the paper.
+Instructions:
+- assign the path of the timetable to format to variable "inputPath"
+- assign the path of the formatted timetable to variable "outputPath"
+- run the code
 
-- Table 2 (Section 5.2): run processingObj.ipynb importing data from results/baseALNS and results/exactMethods
-- Table 3 (Section 5.3): run processingPerIteration.ipynb importing data from results/impactOperators
-- Figure 2 (Section 5.4): run processingPerIteration.ipynb importing data from results/baseALNS
-- Table 4 (Section 5.5): run processingObj.ipynb importing data from results/impactOperators
-- Table 5 (Section 5.6): run processingObj.ipynb importing data from results/mechanismWeightUpdate
+Subfolder examplesFormattedTimetables already contains a few examples.
+
+
+File processingObj.ipynb produces Tables 2, 4, and 5 of the manuscript.
+Instructions:
+- Run the cells in section 1 of the python file
+- Run section 2 to produce Table 2
+- Run section 3 to produce Table 4
+- Run section 4 to produce Table 5
+
+
+File processingPerIteration.ipynb produces Tables 3 and Figure 2 in the paper.
+Instructions:
+- Run the cells in section 1 of the python file
+- Run section 2 to produce Table 3
+- Run section 3 to produce Figure 2. You can plot different runs by changing variables folder, instance, params, and run
 
 # References
 
