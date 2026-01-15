@@ -134,9 +134,9 @@ Folder postProcessing includes the Python files processing the raw results. We u
 File formattingTimetable.ipynb converts the format of the timetables in folder Results from the number of minutes after 7 a.m. to "HH:MM".
 
 Instructions:
-- assign the path of the timetable to format to variable "inputPath"
-- assign the path of the formatted timetable to variable "outputPath"
-- run the code
+- Assign the path of the timetable to format to variable "inputPath"
+- Assign the path of the formatted timetable to variable "outputPath"
+- Run the code
 
 Subfolder examplesFormattedTimetables already contains a few examples.
 
