@@ -140,14 +140,14 @@ Subfolder examplesFormattedTimetables already contains a few examples.
 
 
 File processingObj.ipynb produces Tables 2, 4, and 5 of the manuscript:
-- Run the cells in section 1 of the python file
+- Run the cells in section 1 of the Python file
 - Run section 2 to produce Table 2
 - Run section 3 to produce Table 4
 - Run section 4 to produce Table 5
 
 
 File processingPerIteration.ipynb produces Table 3 and Figure 2 in the paper:
-- Run the cells in section 1 of the python file
+- Run the cells in section 1 of the Python file
 - Run section 2 to produce Table 3
 - Run section 3 to produce Figure 2. You can plot different runs by changing variables folder, instance, params, and run
 
