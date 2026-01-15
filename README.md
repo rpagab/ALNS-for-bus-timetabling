@@ -34,15 +34,15 @@ Folder data includes files config_S, config_M, and config_L that contains parame
 - exp_arrivalbuffer: half of the length of the expected arrival time interval
 
 Folder data also includes one subfolder per instance. Each subfolder contains files for instance specific parameters:
-- alpha: $\alpha_{g1}$ $\alpha_{g2}$ ...
+- alpha: <$\alpha_{g1}$> <$\alpha_{g2}$> ...
 - expArrival: center of expected arrival time interval of each passenger group
-- groups (one line per group): $r_{g1}^{(1)}$ $r_{g1}^{(2)}$ ... ; $\Psi_{g1}^{(1)}$, $\Psi_{g1}^{(2)}$ ... ; $s_{g1}^{(0)}$ ; $s_{g1}^{(|\Psi_{g1}|)}$
-- omega: (one line per transfer opportunity $\psi = (r1, r2, s)$): $r1$ $r2$ $s$ $w_{\psi}$
+- groups (one line per group): <$r_{g1}^{(1)}$> <$r_{g1}^{(2)}$> ... ; <$\Psi_{g1}^{(1)}$>, <$\Psi_{g1}^{(2)}$> ... ; <$s_{g1}^{(0)}$> ; <$s_{g1}^{(|\Psi_{g1}|)}$>
+- omega: (one line per transfer opportunity $\psi = (r1, r2, s)$): <$r1$> <$r2$> <$s$> <$w_{\psi}$>
 - period_horizon (repeats the corresponding config_ file): period horizon
-- routes: $r1$ $r2$ ...
-- stops: $s1$ $s2$ ...
-- transfers (one line per transfer opportunity $\psi = (r1, r2, s)$): $r1$ $r2$ $s$
-- tt_schedule (one line per bus route): $t_{r1s^{(1)}}^1$ $t_{r1s^{(1)}}^2$ ... ; $t_{r1s^{(2)}}^1$ $t_{r1s^{(2)}}^2$ ... ; ...
+- routes: <$r1$> <$r2$> ...
+- stops: <$s1$> <$s2$> ...
+- transfers (one line per transfer opportunity $\psi = (r1, r2, s)$): <$r1$> <$r2$> <$s$>
+- tt_schedule (one line per bus route): <$t_{r1s^{(1)}}^1$> <$t_{r1s^{(1)}}^2$> ... ; <$t_{r1s^{(2)}}^1$> <$t_{r1s^{(2)}}^2$> ... ; ...
 
 # Solution method parameters
 
@@ -75,11 +75,11 @@ Folder Results contains four subfolders: baseALNS, exactMethods, impactOperators
 
 | Type of solution method | Type of output | Format of the file name |
 |----------|----------|----------|
-| ALNS | Objective value | Obj_instance_maxCompTime_nbThreads_operatorSet_lmax_sigmas_tinit_tfin_exponentForTime_validInequalities_run.txt |
-| ALNS | Timetable | Tim_instance_maxCompTime_nbThreads_operatorSet_lmax_sigmas_tinit_tfin_exponentForTime_validInequalities_run.txt |
-| Exact | Objective value | Obj_instance_maxCompTime_nbThreads_initialSolution_validInequalities_run.txt |
-| Exact | Timetable | Tim_instance_maxCompTime_nbThreads_initialSolution_validInequalities_run.txt |
-| Exact | MILP variables | Sol_instance_maxCompTime_nbThreads_initialSolution_validInequalities_run.txt |
+| ALNS | Objective value | `Obj_<instance>_<maxCompTime>_<nbThreads>_<operatorSet>_<lmax>_<sigmas>_<tinit>_<tfin>_<exponentForTime>_<validInequalities>_<run>.txt` |
+| ALNS | Timetable | `Tim_<instance>_<maxCompTime>_<nbThreads>_<operatorSet>_<lmax>_<sigmas>_<tinit>_<tfin>_<exponentForTime>_<validInequalities>_<run>.txt` |
+| Exact | Objective value | `Obj_<instance>_<maxCompTime>_<nbThreads>_<initialSolution>_<validInequalities>_<run>.txt` |
+| Exact | Timetable | `Tim_<instance>_<maxCompTime>_<nbThreads>_<initialSolution>_<validInequalities>_<run>.txt` |
+| Exact | MILP variables | `Sol_<instance>_<maxCompTime>_<nbThreads>_<initialSolution>_<validInequalities>_<run>.txt` |
 
 ## baseALNS
 
@@ -131,9 +131,7 @@ The five subfolders include the results with one of five exponents in the formul
 
 Folder postProcessing includes the Python files processing the raw results. We used Python version 3.9. Packages os, pandas, numpy, itertools, statistics, and matplotlib are required.
 
-File formattingTimetable.ipynb converts the format of the timetables in folder Results from the number of minutes after 7 a.m. to "HH:MM".
-
-Instructions:
+File formattingTimetable.ipynb converts the format of the timetables in folder Results from the number of minutes after 7 a.m. to "HH:MM":
 - Assign the path of the timetable to format to variable "inputPath"
 - Assign the path of the formatted timetable to variable "outputPath"
 - Run the code
@@ -141,16 +139,14 @@ Instructions:
 Subfolder examplesFormattedTimetables already contains a few examples.
 
 
-File processingObj.ipynb produces Tables 2, 4, and 5 of the manuscript.
-Instructions:
+File processingObj.ipynb produces Tables 2, 4, and 5 of the manuscript:
 - Run the cells in section 1 of the python file
 - Run section 2 to produce Table 2
 - Run section 3 to produce Table 4
 - Run section 4 to produce Table 5
 
 
-File processingPerIteration.ipynb produces Tables 3 and Figure 2 in the paper.
-Instructions:
+File processingPerIteration.ipynb produces Table 3 and Figure 2 in the paper:
 - Run the cells in section 1 of the python file
 - Run section 2 to produce Table 3
 - Run section 3 to produce Figure 2. You can plot different runs by changing variables folder, instance, params, and run
