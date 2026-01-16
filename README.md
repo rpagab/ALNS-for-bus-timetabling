@@ -37,11 +37,11 @@ Folder data also includes one subfolder per instance. Each subfolder contains fi
 - alpha: $\alpha_{g1}$ $\alpha_{g2}$ ...
 - expArrival: center of expected arrival time interval of each passenger group
 - groups (one line per group): $r_{g1}^{(1)}$ $r_{g1}^{(2)}$ ... ; $\Psi_{g1}^{(1)}$, $\Psi_{g1}^{(2)}$ ... ; $s_{g1}^{(0)}$ ; $s_{g1}^{(|\Psi_{g1}|)}$
-- omega: (one line per transfer opportunity $\psi = (r1, r2, s)$): $r1$ $r2$ $s$ $w_{\psi}$
+- omega: (one line per transfer opportunity $ \psi = (r1, r2, s)$): $r1$ $r2$ $s$ $w_{\psi}$
 - period_horizon (repeats the corresponding config_ file): period horizon
 - routes: $r1$ $r2$ ...
 - stops: $s1$ $s2$ ...
-- transfers (one line per transfer opportunity $\psi = (r1, r2, s)$): $r1$ $r2$ $s$
+- transfers (one line per transfer opportunity $ \psi = (r1, r2, s)$): $r1$ $r2$ $s$
 - tt_schedule (one line per bus route): $t_{r1s^{(1)}}^1$ $t_{r1s^{(1)}}^2$ ... ; $t_{r1s^{(2)}}^1$ $t_{r1s^{(2)}}^2$ ... ; ...
 
 # Solution method parameters
