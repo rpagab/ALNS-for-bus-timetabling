@@ -71,7 +71,7 @@ The future version will include the Julia source code. The results have been pro
 
 # Results
 
-Folder Results contains four subfolders: baseALNS, exactMethods, impactOperators, and mechanismWeightUpdate. Durations are in minutes and times are in number of minutes after 7 a.m.. The names of the files are formatted as follows:
+Folder Results contains five subfolders: baseALNS, exactMethods, impactOperators, initialSolutionHeuristic, and mechanismWeightUpdate. Durations are in minutes and times are in number of minutes after 7 a.m.. The names of the files are formatted as follows:
 
 | Type of solution method | Type of output | Format of the file name |
 |----------|----------|----------|
@@ -83,7 +83,7 @@ Folder Results contains four subfolders: baseALNS, exactMethods, impactOperators
 | Exact | Timetable | `Tim_<instance>_<maxCompTime>_<nbThreads>_<start>_<validInequalities>_<run>.txt` |
 | Exact | MILP variables | `Sol_<instance>_<maxCompTime>_<nbThreads>_<start>_<validInequalities>_<run>.txt` |
 
-where '<start>' is 'ini' if an initial solution is provided to the exact solution method, 'noIni' otherwise.
+where `<start>` is "ini" if an initial solution is provided to the exact solution method, "noIni" otherwise.
 
 ## baseALNS
 
@@ -126,6 +126,10 @@ If no feasible solution is produced, the solution file does not exist and the ti
 The two subfolders include the results deactivating one of the two operators. In PerIteration, the useful columns are:
 - avgDuration 1: average time consumed by one iteration with the heuristic operator, in seconds
 - avgDuration 5: average time consumed by one iteration with the MILP operator, in seconds
+
+## initialSolutionHeuristic
+
+Subfolders initialSolutionHeuristic includes, for each instance, the ten initial solutions produced by function InitialSolution().
 
 ## mechanismWeightUpdate
 
