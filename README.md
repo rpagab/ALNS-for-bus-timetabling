@@ -75,11 +75,15 @@ Folder Results contains four subfolders: baseALNS, exactMethods, impactOperators
 
 | Type of solution method | Type of output | Format of the file name |
 |----------|----------|----------|
+| Initial solution heuristic | Objective value | `Obj_<instance>_iniSolHeur_<run>.txt` |
+| Initial solution heuristic | Timetable | `Tim_<instance>_iniSolHeur_<run>.txt` |
 | ALNS | Objective value | `Obj_<instance>_<maxCompTime>_<nbThreads>_<operatorSet>_<lmax>_<sigmas>_<tinit>_<tfin>_<exponentForTime>_<validInequalities>_<run>.txt` |
 | ALNS | Timetable | `Tim_<instance>_<maxCompTime>_<nbThreads>_<operatorSet>_<lmax>_<sigmas>_<tinit>_<tfin>_<exponentForTime>_<validInequalities>_<run>.txt` |
-| Exact | Objective value | `Obj_<instance>_<maxCompTime>_<nbThreads>_<initialSolution>_<validInequalities>_<run>.txt` |
-| Exact | Timetable | `Tim_<instance>_<maxCompTime>_<nbThreads>_<initialSolution>_<validInequalities>_<run>.txt` |
-| Exact | MILP variables | `Sol_<instance>_<maxCompTime>_<nbThreads>_<initialSolution>_<validInequalities>_<run>.txt` |
+| Exact | Objective value | `Obj_<instance>_<maxCompTime>_<nbThreads>_<start>_<validInequalities>_<run>.txt` |
+| Exact | Timetable | `Tim_<instance>_<maxCompTime>_<nbThreads>_<start>_<validInequalities>_<run>.txt` |
+| Exact | MILP variables | `Sol_<instance>_<maxCompTime>_<nbThreads>_<start>_<validInequalities>_<run>.txt` |
+
+where <start> is ini if an initial solution is provided to the exact solution method, noIni otherwise.
 
 ## baseALNS
 
