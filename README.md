@@ -15,7 +15,7 @@ This study develops an adaptive large neighbourhood search (ALNS) based matheuri
 
 The study focuses on three bus lines operating within the metropolitan area of Copenhagen, Denmark. These lines, designated 1A, 2A, and 3A, represented some of the most prominent bus routes in the city. We employ a dataset comprising the Danish Rejsekort smart card transactions from 2014.
 
-A total of nine instances were produced based on this network. Each instance is named by one letter S, M or L and one number 1, 2 or 3. The letter indicates if the instance size is Small, Medium or Large. Files related to input data are in the data folder. Durations are in minutes and times are in number of minutes after 7 a.m..
+A total of nine instances were produced based on this network. Each instance is named by one letter S, M or L and one number 1, 2 or 3. The letter indicates if the instance size is Small, Medium or Large. Files related to input data are in the data folder. Durations are in minutes and times are in number of minutes after 7 a.m.
 
 The data folder includes files config_S, config_M, and config_L that contain parameters common to all instances of the same size:
 - hmin: minimum headway for each bus route
@@ -35,7 +35,7 @@ The data folder includes files config_S, config_M, and config_L that contain par
 
 The data folder also includes one subfolder per instance. Each subfolder contains files for instance-specific parameters:
 - alpha: $\alpha_{g1}$ $\alpha_{g2}$ ...
-- expArrival: center of the expected arrival time interval of each passenger group
+- expArrival: centre of the expected arrival time interval of each passenger group
 - groups (one line per group): $r_{g1}^{(1)}$ $r_{g1}^{(2)}$ ... ; $\Psi_{g1}^{(1)}$, $\Psi_{g1}^{(2)}$ ... ; $s_{g1}^{(0)}$ ; $s_{g1}^{(|\Psi_{g1}|)}$
 - omega: (one line per transfer opportunity $\psi$ = ($r1$, $r2$, $s$)): $r1$ $r2$ $s$ $w_{\psi}$
 - period_horizon (repeats the corresponding config_ file): period horizon
@@ -71,7 +71,7 @@ The future version will include the Julia source code. The results have been pro
 
 # Results
 
-The Results folder contains five subfolders: baseALNS, exactMethods, impactOperators, initialSolutionHeuristic, and mechanismWeightUpdate. Durations are in minutes and times are in number of minutes after 7 a.m.. The names of the files are formatted as follows:
+The Results folder contains five subfolders: baseALNS, exactMethods, impactOperators, initialSolutionHeuristic, and mechanismWeightUpdate. Durations are in minutes and times are in number of minutes after 7 a.m. The names of the files are formatted as follows:
 
 | Type of solution method | Type of output | Format of the file name |
 |----------|----------|----------|
@@ -101,7 +101,7 @@ In the Timetable subfolder, each file contains the timetable (arrival and depart
 
 ## exactMethods
 
-The six subfolders contain the results with the six exact methods (same notations as in Section 5.2.2). Each subfolder contains three subfolders: Objective, Timetable, and MILPSolution. These results are used to produce Tables 2 in Section 5.2.2. In MILPSolution, each file contains all variables of the best solution found by Gurobi. The following notations are used:
+The six subfolders contain the results with the six exact methods (same notations as in Section 5.2.2). Each subfolder contains three subfolders: Objective, Timetable, and MILPSolution. These results are used to produce Table 2 in Section 5.2.2. In MILPSolution, each file contains all variables of the best solution found by Gurobi. The following notations are used:
 
 | Model formulation | Solution file |
 |----------|----------|
@@ -120,7 +120,7 @@ The six subfolders contain the results with the six exact methods (same notation
 | $e_g$        | eg[ $g$]        | 
 | $l_g$        | lg[ $g$]        | 
 
-If no feasible solution is produced, the solution file does not exist and the timetable file is empty.
+If no feasible solution is produced, the solution file does not exist, and the timetable file is empty.
 
 ## impactOperators
 
@@ -141,7 +141,7 @@ The five subfolders include the results with one of five exponents in the formul
 The postProcessing folder includes the Python files processing the raw results. We used Python version 3.9. Packages os, pandas, numpy, itertools, statistics, and matplotlib are required.
 
 The file formattingTimetable.ipynb converts the format of the timetables in the Results folder from the number of minutes after 7 a.m. to "HH:MM". To do so, proceed as follows:
-- Assign the path of the timetable to format to the inputPath variable
+- Assign the path of the timetable to be formatted to the inputPath variable
 - Assign the path of the formatted timetable to the outputPath variable
 - Run the code
 
