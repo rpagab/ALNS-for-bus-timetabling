@@ -83,7 +83,7 @@ Folder Results contains four subfolders: baseALNS, exactMethods, impactOperators
 | Exact | Timetable | `Tim_<instance>_<maxCompTime>_<nbThreads>_<start>_<validInequalities>_<run>.txt` |
 | Exact | MILP variables | `Sol_<instance>_<maxCompTime>_<nbThreads>_<start>_<validInequalities>_<run>.txt` |
 
-where <start> is ini if an initial solution is provided to the exact solution method, noIni otherwise.
+where '<start>' is 'ini' if an initial solution is provided to the exact solution method, 'noIni' otherwise.
 
 ## baseALNS
 
