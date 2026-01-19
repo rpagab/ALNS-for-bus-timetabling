@@ -33,7 +33,7 @@ The data folder includes files config_S, config_M, and config_L that contain par
 - weight_earlyarrival: coefficient of early arrival time in the objective function
 - exp_arrivalbuffer: half of the length of the expected arrival time interval
 
-The data data also includes one subfolder per instance. Each subfolder contains files for instance-specific parameters:
+The data folder also includes one subfolder per instance. Each subfolder contains files for instance-specific parameters:
 - alpha: $\alpha_{g1}$ $\alpha_{g2}$ ...
 - expArrival: center of the expected arrival time interval of each passenger group
 - groups (one line per group): $r_{g1}^{(1)}$ $r_{g1}^{(2)}$ ... ; $\Psi_{g1}^{(1)}$, $\Psi_{g1}^{(2)}$ ... ; $s_{g1}^{(0)}$ ; $s_{g1}^{(|\Psi_{g1}|)}$
@@ -41,7 +41,7 @@ The data data also includes one subfolder per instance. Each subfolder contains 
 - period_horizon (repeats the corresponding config_ file): period horizon
 - routes: $r1$ $r2$ ...
 - stops: $s1$ $s2$ ...
-- transfers (one line per transfer opportunity $\psi$ = ($r1$, $r2$, $s$): $r1$ $r2$ $s$
+- transfers (one line per transfer opportunity $\psi$ = ($r1$, $r2$, $s$)): $r1$ $r2$ $s$
 - tt_schedule (one line per bus route): $t_{r1s^{(1)}}^1$ $t_{r1s^{(1)}}^2$ ... ; $t_{r1s^{(2)}}^1$ $t_{r1s^{(2)}}^2$ ... ; ...
 
 # Solution method parameters
@@ -58,7 +58,7 @@ The following parameters are common to all experiments using our ALNS solution m
 - lmax = 0.1: the maximum reaction factor $\eta_{max}$
 - sigmas = 1_0.005_1e-8: the rewards $\sigma_1$ _ $\sigma_2$ _ $\sigma_3$
 - tinit = 100: the initial temperature $T_{ini}$
-- tfin = 100: the final temperature $T_{fin}$
+- tfin = 0.0001: the final temperature $T_{fin}$
 - validInequalities = 0: 0 indicates that the valid inequalities are not included in the MILP operator
 
 The following parameters differ between experiments using our ALNS solution method:
@@ -87,9 +87,9 @@ where `<start>` is "ini" if an initial solution is provided to the exact solutio
 
 ## baseALNS
 
-The baseALNS subfolder includes subfolders Objective, PerIteration, and Timetable. In subfolder Objective, each file contains the objective function value produced by one run of the ALNS for one instance and the base parameters (full operator set and inverse-square rule). Besides other results, these results are used to produce Tables 2, 4, and 5.
+The baseALNS subfolder includes the subfolders Objective, PerIteration, and Timetable. In the Objective subfolder, each file contains the objective function value produced by one run of the ALNS for one instance and the base parameters (full operator set and inverse-square rule). Besides other results, these results are used to produce Tables 2, 4, and 5.
 
-In subfolder PerIteration, each file contains various variable values at each iteration of the ALNS. The useful columns are:
+In the PerIteration subfolder, each file contains various variable values at each iteration of the ALNS. The useful columns are:
 - time: elapsed time, in seconds
 - best obj: objective function value of the best solution
 - duration 1: total time consumed by the iterations employing the heuristic operator, in seconds
@@ -97,11 +97,11 @@ In subfolder PerIteration, each file contains various variable values at each it
 
 These results are used to produce Figure 2.
 
-In subfolder Timetable, each file contains the timetable (arrival and departure times of each bus route and run at each stop) of one ALNS run.
+In the Timetable subfolder, each file contains the timetable (arrival and departure times of each bus route and run at each stop) of one ALNS run.
 
 ## exactMethods
 
-The six subfolders contain the results with the six exact methods (same notations as in Section 5.2.2). Each subfolder contains three subfolders, Objective, Timetable, and MILPSolution. These results are used to produce Tables 2 in Section 5.2.2. In MILPSolution, each file contains all variables of the best solution found by Gurobi. The following notations are used:
+The six subfolders contain the results with the six exact methods (same notations as in Section 5.2.2). Each subfolder contains three subfolders: Objective, Timetable, and MILPSolution. These results are used to produce Tables 2 in Section 5.2.2. In MILPSolution, each file contains all variables of the best solution found by Gurobi. The following notations are used:
 
 | Model formulation | Solution file |
 |----------|----------|
@@ -140,7 +140,7 @@ The five subfolders include the results with one of five exponents in the formul
 
 The postProcessing folder includes the Python files processing the raw results. We used Python version 3.9. Packages os, pandas, numpy, itertools, statistics, and matplotlib are required.
 
-The file formattingTimetable.ipynb converts the format of the timetables in the Results folder from the number of minutes after 7 a.m. to "HH:MM":
+The file formattingTimetable.ipynb converts the format of the timetables in the Results folder from the number of minutes after 7 a.m. to "HH:MM". To do so, proceed as follows:
 - Assign the path of the timetable to format to the inputPath variable
 - Assign the path of the formatted timetable to the outputPath variable
 - Run the code
@@ -148,17 +148,17 @@ The file formattingTimetable.ipynb converts the format of the timetables in the 
 The examplesFormattedTimetables subfolder already contains a few examples.
 
 
-The file processingObj.ipynb produces Tables 2, 4, and 5 of the manuscript:
+The file processingObj.ipynb produces Tables 2, 4, and 5 of the article:
 - Run the cells in section 1 of the Python file
 - Run section 2 to produce Table 2
 - Run section 3 to produce Table 4
 - Run section 4 to produce Table 5
 
 
-The file processingPerIteration.ipynb produces Table 3 and Figure 2 in the paper:
+The file processingPerIteration.ipynb produces Table 3 and Figure 2 of the article:
 - Run the cells in section 1 of the Python file
 - Run section 2 to produce Table 3
-- Run section 3 to produce Figure 2. You can plot different runs by changing variables the folder, instance, params, and run
+- Run section 3 to produce Figure 2. You can plot different runs by changing the variables folder, instance, params, and run.
 
 # References
 
