@@ -94,13 +94,14 @@ In subfolder PerIteration, each file contains various variable values at each it
 - best obj: objective function value of the best solution
 - duration 1: total time consumed by the iterations employing the heuristic operator, in seconds
 - duration 5: total time consumed by the iterations employing the MILP operator, in seconds
+
 These results are used to produce Figure 2.
 
 In subfolder Timetable, each file contains the timetable (arrival and departure times of each bus route and run at each stop) of one ALNS run.
 
 ## exactMethods
 
-The six subfolders contain the results with the six exact methods (same notations as in Section 5.2.2). Each subfolder contains three subforlders, Objective, Timetable, and MILPSolution. These results are used to produce Tables 2 in Section 5.2.2. In MILPSolution, each file contains all variables of the best solution found by Gurobi. The following notations are used:
+The six subfolders contain the results with the six exact methods (same notations as in Section 5.2.2). Each subfolder contains three subfolders, Objective, Timetable, and MILPSolution. These results are used to produce Tables 2 in Section 5.2.2. In MILPSolution, each file contains all variables of the best solution found by Gurobi. The following notations are used:
 
 | Model formulation | Solution file |
 |----------|----------|
